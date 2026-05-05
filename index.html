@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anthropic Academy — План обучения</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a0a;
+    --bg-elevated: #141414;
+    --bg-hover: #1c1c1c;
+    --green: #1D9E75;
+    --green-dim: #0F6E56;
+    --white: #ffffff;
+    --text: #ffffff;
+    --text-dim: #888;
+    --text-faint: #555;
+    --border: #222;
+    --border-bright: #333;
+  }
+
+  html, body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 32px 80px;
+  }
+
+  /* HEADER */
+  .header {
+    margin-bottom: 56px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .header-top {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .logo {
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .logo svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .header-meta {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    font-weight: 500;
+  }
+
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 88px;
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+    margin-bottom: 16px;
+  }
+
+  h1 .accent {
+    color: var(--green);
+  }
+
+  .header-sub {
+    font-size: 18px;
+    color: var(--text-dim);
+    font-weight: 300;
+    max-width: 720px;
+  }
+
+  /* STATS GRID */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-bottom: 24px;
+  }
+
+  .stat {
+    background: var(--bg);
+    padding: 28px 24px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 12px;
+    font-weight: 500;
+  }
+
+  .stat-value {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 56px;
+    line-height: 1;
+    letter-spacing: -0.01em;
+  }
+
+  .stat-value .green {
+    color: var(--green);
+  }
+
+  .stat-value .small {
+    font-size: 28px;
+    color: var(--text-dim);
+  }
+
+  .stat-sub {
+    font-size: 13px;
+    color: var(--text-dim);
+    margin-top: 6px;
+    font-weight: 300;
+  }
+
+  /* PROGRESS BAR */
+  .progress-wrap {
+    margin-bottom: 56px;
+  }
+
+  .progress-track {
+    height: 4px;
+    background: var(--bg-elevated);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: var(--green);
+    width: 0%;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* BLOCK */
+  .block {
+    margin-bottom: 56px;
+  }
+
+  .block-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .block-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    line-height: 1;
+    letter-spacing: 0.01em;
+  }
+
+  .block-num {
+    color: var(--green);
+    margin-right: 12px;
+  }
+
+  .block-meta {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    font-weight: 500;
+    text-align: right;
+  }
+
+  .block-progress {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    color: var(--white);
+    margin-top: 4px;
+    letter-spacing: 0.02em;
+  }
+
+  /* COURSE DIVIDER */
+  .course-divider {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--green);
+    font-weight: 500;
+    padding: 24px 0 4px;
+    text-decoration: none;
+    transition: color 0.15s, transform 0.15s;
+  }
+  a.course-divider:hover {
+    color: #2BC58F;
+    transform: translateX(2px);
+  }
+  .course-divider::after {
+    content: "↗";
+    font-size: 12px;
+    opacity: 0.6;
+    transition: opacity 0.15s;
+  }
+  a.course-divider:hover::after { opacity: 1; }
+  .course-divider-wrap {
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* RU ALTERNATIVE LINE */
+  .course-ru {
+    font-size: 12.5px;
+    color: var(--text-dim);
+    padding: 0 0 14px;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .course-ru-label {
+    font-size: 9.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--green-dim);
+    border: 1px solid var(--green-dim);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+  .course-ru-label.none {
+    color: var(--text-faint);
+    border-color: var(--border-bright);
+  }
+  .course-ru a {
+    color: var(--text);
+    text-decoration: none;
+    border-bottom: 1px dashed var(--text-faint);
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .course-ru a:hover {
+    color: var(--green);
+    border-bottom-color: var(--green);
+  }
+
+  /* DAY ROW */
+  .day {
+    display: grid;
+    grid-template-columns: 36px 60px 80px 1fr 1.2fr;
+    gap: 20px;
+    align-items: center;
+    padding: 16px 12px;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.15s;
+    cursor: pointer;
+  }
+
+  .day:hover {
+    background: var(--bg-elevated);
+  }
+
+  .day.done {
+    opacity: 0.4;
+  }
+
+  .day.done .day-topic {
+    text-decoration: line-through;
+    text-decoration-color: var(--text-faint);
+  }
+
+  .day-check {
+    width: 22px;
+    height: 22px;
+    border: 1.5px solid var(--border-bright);
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .day:hover .day-check {
+    border-color: var(--green);
+  }
+
+  .day-check.done {
+    background: var(--green);
+    border-color: var(--green);
+  }
+
+  .day-check.done::after {
+    content: "";
+    width: 6px;
+    height: 11px;
+    border: solid var(--bg);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg) translate(-1px, -1px);
+  }
+
+  .day-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    color: var(--text-dim);
+    letter-spacing: 0.02em;
+  }
+
+  .day-date {
+    font-size: 13px;
+    color: var(--text-dim);
+    font-weight: 400;
+  }
+
+  .day-topic {
+    font-size: 15px;
+    color: var(--text);
+    font-weight: 400;
+  }
+
+  .day-practice {
+    font-size: 13px;
+    color: var(--text-dim);
+    font-weight: 300;
+  }
+
+  .day-practice::before {
+    content: "→ ";
+    color: var(--green);
+    font-weight: 500;
+  }
+
+  /* CONTROLS */
+  .controls {
+    margin-top: 56px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border-bright);
+    padding: 14px 28px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .btn:hover {
+    border-color: var(--green);
+    color: var(--green);
+  }
+
+  .btn.primary {
+    background: var(--green);
+    border-color: var(--green);
+    color: var(--bg);
+  }
+
+  .btn.primary:hover {
+    background: var(--green-dim);
+    border-color: var(--green-dim);
+    color: var(--white);
+  }
+
+  /* FOOTER */
+  .footer {
+    margin-top: 64px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    font-weight: 500;
+  }
+
+  .footer .accent {
+    color: var(--green);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .container { padding: 40px 20px 60px; }
+    h1 { font-size: 56px; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .day {
+      grid-template-columns: 28px 50px 1fr;
+      gap: 12px;
+    }
+    .day-date { display: none; }
+    .day-practice {
+      grid-column: 1 / -1;
+      padding-left: 40px;
+    }
+    .day-num { font-size: 14px; }
+    .day-topic { font-size: 14px; }
+    .stat-value { font-size: 40px; }
+    .block-title { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-top">
+      <div class="logo">
+        <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="3" width="4" height="14" fill="#1D9E75"/>
+          <rect x="8" y="3" width="4" height="14" fill="#fff"/>
+          <rect x="14" y="3" width="4" height="14" fill="#fff"/>
+        </svg>
+      </div>
+      <div class="header-meta">Vartan Gevenyan · План обучения · 2026</div>
+    </div>
+
+    <h1>Anthropic<br>Academy<span class="accent">.</span></h1>
+
+    <p class="header-sub">
+      56 дней. 13 курсов. 112 часов практики. От рамки 4D до production-уровня MCP.
+      Цель — глубокое использование Claude как стратегом и фасилитатором.
+    </p>
+  </header>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-label">Прогресс</div>
+      <div class="stat-value"><span class="green" id="done-count">0</span><span class="small"> / 56</span></div>
+      <div class="stat-sub">дней пройдено</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Часы</div>
+      <div class="stat-value"><span id="hours-count">0</span><span class="small"> / 112</span></div>
+      <div class="stat-sub">в учёте</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Текущий блок</div>
+      <div class="stat-value" style="font-size: 24px; line-height: 1.2;" id="current-block">Фундамент</div>
+      <div class="stat-sub" id="current-block-sub">блок 1 из 5</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Финиш</div>
+      <div class="stat-value" style="font-size: 32px;">01.07</div>
+      <div class="stat-sub">2026 года</div>
+    </div>
+  </div>
+
+  <!-- PROGRESS -->
+  <div class="progress-wrap">
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-bar"></div>
+    </div>
+  </div>
+
+  <!-- BLOCKS -->
+  <div id="blocks-container"></div>
+
+  <!-- CONTROLS -->
+  <div class="controls">
+    <button class="btn primary" id="export-btn">Скопировать прогресс</button>
+    <button class="btn" id="reset-btn">Сбросить</button>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div>Стратег<span class="accent"> · </span>Практик<span class="accent"> · </span>Партнёр</div>
+    <div>@Gevenyan_V</div>
+  </footer>
+
+</div>
+
+<script>
+const days = [
+  {n:1,date:"Ср 6.05",block:1,course:"ИИ-грамотность: фреймворк и основы",topic:"Введение + Зачем AI Fluency",practice:"Аудит 3 своих задач с Claude"},
+  {n:2,date:"Чт 7.05",block:1,course:"ИИ-грамотность: фреймворк и основы",topic:"4D Framework — обзор",practice:"Разложить проект по 4D"},
+  {n:3,date:"Пт 8.05",block:1,course:"ИИ-грамотность: фреймворк и основы",topic:"Deep Dive: Generative AI",practice:"Найти 3 галлюцинации в чатах"},
+  {n:4,date:"Сб 9.05",block:1,course:"ИИ-грамотность: фреймворк и основы",topic:"Capabilities & Limitations",practice:"Список «отдаю / не отдаю» Claude"},
+  {n:5,date:"Вс 10.05",block:1,course:"ИИ-грамотность: фреймворк и основы",topic:"Delegation + Project Planning",practice:"Разложить запуск «ТО, ИЛИ»"},
+  {n:6,date:"Пн 11.05",block:1,course:"ИИ-грамотность: фреймворк и основы",topic:"Description + промптинг",practice:"Переписать 3 старых промпта"},
+  {n:7,date:"Вт 12.05",block:1,course:"ИИ-грамотность: фреймворк и основы",topic:"Discernment + D-D loop + Diligence",practice:"Тест на sycophancy + чеклист"},
+  {n:8,date:"Ср 13.05",block:1,course:"Возможности и ограничения ИИ",topic:"Intro + Next Token Prediction",practice:"Угадать тип ошибки в 3 кейсах"},
+  {n:9,date:"Чт 14.05",block:1,course:"Возможности и ограничения ИИ",topic:"Knowledge + Working Memory",practice:"Тест памяти Claude в длинном чате"},
+  {n:10,date:"Пт 15.05",block:1,course:"Возможности и ограничения ИИ",topic:"Steerability + квиз",practice:"Управление стилем ответа"},
+  {n:11,date:"Сб 16.05",block:1,course:"Claude 101",topic:"Meet Claude + первый разговор",practice:"Базовый workflow"},
+  {n:12,date:"Вс 17.05",block:1,course:"Claude 101",topic:"Desktop + Projects + Artifacts",practice:"Создать Project «Сессии»"},
+  {n:13,date:"Пн 18.05",block:1,course:"Claude 101",topic:"Skills + Connectors + Search",practice:"Подключить Google Drive"},
+  {n:14,date:"Вт 19.05",block:1,course:"Claude 101",topic:"Research mode + use-cases + сертификат",practice:"Research для клиента"},
+
+  {n:15,date:"Ср 20.05",block:2,course:"Введение в Claude Cowork",topic:"What is Cowork + setup",practice:"Установка Cowork"},
+  {n:16,date:"Чт 21.05",block:2,course:"Введение в Claude Cowork",topic:"Первая задача + task loop",practice:"Запустить task на лендинге"},
+  {n:17,date:"Пт 22.05",block:2,course:"Введение в Claude Cowork",topic:"Giving Cowork context",practice:"Загрузить материалы сессии"},
+  {n:18,date:"Сб 23.05",block:2,course:"Введение в Claude Cowork",topic:"Plugins + Scheduled tasks",practice:"Plugin для Telegram-постов"},
+  {n:19,date:"Вс 24.05",block:2,course:"Введение в Claude Cowork",topic:"File & document tasks",practice:"Cowork с файлами карточной игры"},
+  {n:20,date:"Пн 25.05",block:2,course:"Введение в Claude Cowork",topic:"Research & analysis at scale",practice:"Анализ 5 клиентских кейсов"},
+  {n:21,date:"Вт 26.05",block:2,course:"Введение в Claude Cowork",topic:"Permissions + responsible use + квиз",practice:"Чеклист безопасности"},
+  {n:22,date:"Ср 27.05",block:2,course:"Введение в агентские скилы",topic:"Что такое Skills + создание",practice:"Skill «Подготовка сессии»"},
+  {n:23,date:"Чт 28.05",block:2,course:"Введение в агентские скилы",topic:"Конфигурация Skills",practice:"Skill для контент-плана"},
+  {n:24,date:"Пт 29.05",block:2,course:"Введение в агентские скилы",topic:"Распространение + troubleshooting",practice:"Поделиться Skill с командой"},
+  {n:25,date:"Сб 30.05",block:2,course:"Введение в агентские скилы",topic:"Практика + кейсы",practice:"Применить Skill на калькуляторе"},
+  {n:26,date:"Вс 31.05",block:2,course:"Введение в сабагенты",topic:"Что такое subagents",practice:"Делегирование внутри Claude"},
+  {n:27,date:"Пн 1.06",block:2,course:"Введение в сабагенты",topic:"Создание subagent",practice:"Subagent-аналитик клиентов"},
+  {n:28,date:"Вт 2.06",block:2,course:"Введение в сабагенты",topic:"Workflows + best practices",practice:"Параллельные задачи"},
+
+  {n:29,date:"Ср 3.06",block:3,course:"ИИ-грамотность для преподавателей",topic:"AI в обучении взрослых",practice:"Маппинг на твои сессии"},
+  {n:30,date:"Чт 4.06",block:3,course:"ИИ-грамотность для преподавателей",topic:"Дизайн обучения с AI",practice:"Модуль AI Fluency для клиента"},
+  {n:31,date:"Пт 5.06",block:3,course:"ИИ-грамотность для преподавателей",topic:"Этика и оценка",practice:"Чеклист оценки команды"},
+  {n:32,date:"Сб 6.06",block:3,course:"ИИ-грамотность для преподавателей",topic:"Институциональная стратегия",practice:"Предложение для Wildberries"},
+  {n:33,date:"Вс 7.06",block:3,course:"Преподавание ИИ-грамотности",topic:"Методики преподавания",practice:"Дизайн упражнения"},
+  {n:34,date:"Пн 8.06",block:3,course:"Преподавание ИИ-грамотности",topic:"Оценка компетенций",practice:"Рубрика 4D для команды"},
+  {n:35,date:"Вт 9.06",block:3,course:"Преподавание ИИ-грамотности",topic:"Instructor-led сессии",practice:"Сценарий 1-дневной сессии"},
+
+  {n:36,date:"Ср 10.06",block:4,course:"Разработка с Claude API",topic:"Введение в API",practice:"Первый API-вызов"},
+  {n:37,date:"Чт 11.06",block:4,course:"Разработка с Claude API",topic:"Messages + параметры",practice:"Простой скрипт"},
+  {n:38,date:"Пт 12.06",block:4,course:"Разработка с Claude API",topic:"Tool use + function calling",practice:"Tool для калькулятора"},
+  {n:39,date:"Сб 13.06",block:4,course:"Разработка с Claude API",topic:"Streaming + batches",practice:"Batch-обработка кейсов"},
+  {n:40,date:"Вс 14.06",block:4,course:"Разработка с Claude API",topic:"Vision + документы",practice:"PDF-анализ клиентов"},
+  {n:41,date:"Пн 15.06",block:4,course:"Разработка с Claude API",topic:"Production patterns",practice:"Rate limits + ошибки"},
+  {n:42,date:"Вт 16.06",block:4,course:"Разработка с Claude API",topic:"Безопасность + финал",practice:"Защита API-ключей"},
+  {n:43,date:"Ср 17.06",block:4,course:"Введение в MCP",topic:"Что такое MCP",practice:"Концепция протокола"},
+  {n:44,date:"Чт 18.06",block:4,course:"Введение в MCP",topic:"Tools + Resources + Prompts",practice:"Первый MCP-сервер"},
+  {n:45,date:"Пт 19.06",block:4,course:"Введение в MCP",topic:"Подключение к Claude",practice:"MCP в Cowork"},
+  {n:46,date:"Сб 20.06",block:4,course:"Введение в MCP",topic:"Практика + квиз",practice:"MCP для сессионных материалов"},
+  {n:47,date:"Вс 21.06",block:4,course:"MCP: продвинутые темы",topic:"Sampling + Notifications",practice:"Продвинутые паттерны"},
+  {n:48,date:"Пн 22.06",block:4,course:"MCP: продвинутые темы",topic:"File system + transports",practice:"MCP с файлами"},
+  {n:49,date:"Вт 23.06",block:4,course:"MCP: продвинутые темы",topic:"Production MCP",practice:"MCP-сервер для клиентов"},
+
+  {n:50,date:"Ср 24.06",block:5,course:"Claude Code 101",topic:"Установка + первый запуск",practice:"Code в терминале"},
+  {n:51,date:"Чт 25.06",block:5,course:"Claude Code 101",topic:"Workflow + команды",practice:"Базовые задачи"},
+  {n:52,date:"Пт 26.06",block:5,course:"Claude Code 101",topic:"MCP + плагины в Code",practice:"Подключить MCP"},
+  {n:53,date:"Сб 27.06",block:5,course:"Claude Code 101",topic:"Финал + решение продолжать ли",practice:"Развилка: глубже или закрыть"},
+  {n:54,date:"Вс 28.06",block:5,course:"Claude Code на практике",topic:"Реальные dev-сценарии",practice:"Рефакторинг калькулятора"},
+  {n:55,date:"Пн 29.06",block:5,course:"Claude Code на практике",topic:"Большие кодовые базы",practice:"Работа с проектом"},
+  {n:56,date:"Вт 30.06",block:5,course:"Claude Code на практике",topic:"Финал курса + сертификат",practice:"Полный workflow"}
+];
+
+const blocks = [
+  {n:1, name:"Фундамент",       hours:"28 часов", dates:"6–19 мая"},
+  {n:2, name:"Прикладной",      hours:"28 часов", dates:"20 мая – 2 июня"},
+  {n:3, name:"Образовательный", hours:"14 часов", dates:"3–9 июня"},
+  {n:4, name:"Платформа",       hours:"28 часов", dates:"10–23 июня"},
+  {n:5, name:"Claude Code",     hours:"14 часов", dates:"24–30 июня"}
+];
+
+const courseRu = {
+  "ИИ-грамотность: фреймворк и основы":   {kind:"none"},
+  "Возможности и ограничения ИИ":         {kind:"none"},
+  "Claude 101":                           {kind:"docs",    label:"Официальные русские доки Claude",                       url:"https://platform.claude.com/docs/ru/home"},
+  "Введение в Claude Cowork":             {kind:"video",   label:"Claude Code: полный курс 2026 (4+ часа)",               url:"https://www.youtube.com/watch?v=e6JOw0PliRw"},
+  "Введение в агентские скилы":           {kind:"video",   label:"Прямой разбор курса Anthropic Agent Skills, урок 1",    url:"https://www.youtube.com/watch?v=MPM6PdUuoZo"},
+  "Введение в сабагенты":                 {kind:"video",   label:"Subagent Driven разработка — полный гайд 2026",         url:"https://www.youtube.com/watch?v=_4ZcgpvDliA"},
+  "ИИ-грамотность для преподавателей":    {kind:"none"},
+  "Преподавание ИИ-грамотности":          {kind:"none"},
+  "Разработка с Claude API":              {kind:"docs",    label:"Официальные русские API-доки Anthropic",                url:"https://platform.claude.com/docs/ru/home"},
+  "Введение в MCP":                       {kind:"article", label:"Гайд по MCP 2026 (ybuild.ai)",                          url:"https://ybuild.ai/ru/blog/mcp-model-context-protocol-guide-best-servers-setup-2026"},
+  "MCP: продвинутые темы":                {kind:"video",   label:"MCP-серверы, Agent Teams, Telegram-бот (3+ часа)",       url:"https://www.youtube.com/watch?v=uTX807i8wvA"},
+  "Claude Code 101":                      {kind:"docs",    label:"Русские доки Claude Code + маршрут обучения на Хабре",  url:"https://code.claude.com/docs/ru/overview"},
+  "Claude Code на практике":              {kind:"video",   label:"Claude Code: полный курс 2026 (4+ часа)",               url:"https://www.youtube.com/watch?v=e6JOw0PliRw"}
+};
+
+const ruKindLabel = {
+  video:   "видео RU",
+  docs:    "доки RU",
+  article: "статья RU",
+  none:    "только EN"
+};
+
+const courseUrls = {
+  "ИИ-грамотность: фреймворк и основы":   "https://anthropic.skilljar.com/ai-fluency-framework-foundations",
+  "Возможности и ограничения ИИ":         "https://anthropic.skilljar.com/ai-capabilities-and-limitations",
+  "Claude 101":                           "https://anthropic.skilljar.com/claude-101",
+  "Введение в Claude Cowork":             "https://anthropic.skilljar.com/introduction-to-claude-cowork",
+  "Введение в агентские скилы":           "https://anthropic.skilljar.com/introduction-to-agent-skills",
+  "Введение в сабагенты":                 "https://anthropic.skilljar.com/introduction-to-subagents",
+  "ИИ-грамотность для преподавателей":    "https://anthropic.skilljar.com/ai-fluency-for-educators",
+  "Преподавание ИИ-грамотности":          "https://anthropic.skilljar.com/teaching-ai-fluency",
+  "Разработка с Claude API":              "https://anthropic.skilljar.com/claude-with-the-anthropic-api",
+  "Введение в MCP":                       "https://anthropic.skilljar.com/introduction-to-model-context-protocol",
+  "MCP: продвинутые темы":                "https://anthropic.skilljar.com/model-context-protocol-advanced-topics",
+  "Claude Code 101":                      "https://anthropic.skilljar.com/claude-code-101",
+  "Claude Code на практике":              "https://anthropic.skilljar.com/claude-code-in-action"
+};
+
+const STORAGE_KEY = "vartan_anthropic_academy_progress";
+
+function loadProgress() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    return raw ? JSON.parse(raw) : {};
+  } catch { return {}; }
+}
+
+function saveProgress(state) {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  } catch {}
+}
+
+function render() {
+  const state = loadProgress();
+  const container = document.getElementById("blocks-container");
+  container.innerHTML = "";
+
+  blocks.forEach(block => {
+    const blockDays = days.filter(d => d.block === block.n);
+    const blockDone = blockDays.filter(d => state[d.n]).length;
+
+    const section = document.createElement("section");
+    section.className = "block";
+
+    section.innerHTML = `
+      <div class="block-header">
+        <div class="block-title">
+          <span class="block-num">0${block.n}</span>${block.name}
+        </div>
+        <div>
+          <div class="block-meta">${block.dates} · ${block.hours}</div>
+          <div class="block-progress">${blockDone} / ${blockDays.length}</div>
+        </div>
+      </div>
+    `;
+
+    let lastCourse = null;
+    blockDays.forEach(d => {
+      if (d.course !== lastCourse) {
+        const wrap = document.createElement("div");
+        wrap.className = "course-divider-wrap";
+        const url = courseUrls[d.course];
+        const link = document.createElement(url ? "a" : "div");
+        link.className = "course-divider";
+        link.textContent = d.course;
+        if (url) {
+          link.href = url;
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
+        }
+        wrap.appendChild(link);
+
+        const ru = courseRu[d.course];
+        if (ru) {
+          const ruLine = document.createElement("div");
+          ruLine.className = "course-ru";
+          const labelClass = ru.kind === "none" ? "course-ru-label none" : "course-ru-label";
+          if (ru.kind === "none") {
+            ruLine.innerHTML = `<span class="${labelClass}">${ruKindLabel.none}</span><span>русского аналога нет — слушай через нейроозвучку в Яндекс.Браузере</span>`;
+          } else {
+            ruLine.innerHTML = `<span class="${labelClass}">${ruKindLabel[ru.kind]}</span><a href="${ru.url}" target="_blank" rel="noopener noreferrer">${ru.label}</a>`;
+          }
+          wrap.appendChild(ruLine);
+        }
+
+        section.appendChild(wrap);
+        lastCourse = d.course;
+      }
+
+      const row = document.createElement("div");
+      row.className = "day" + (state[d.n] ? " done" : "");
+      row.dataset.day = d.n;
+      row.innerHTML = `
+        <div class="day-check ${state[d.n] ? "done" : ""}"></div>
+        <span class="day-num">День ${d.n}</span>
+        <span class="day-date">${d.date}</span>
+        <div class="day-topic">${d.topic}</div>
+        <div class="day-practice">${d.practice}</div>
+      `;
+      row.addEventListener("click", () => {
+        const s = loadProgress();
+        s[d.n] = !s[d.n];
+        saveProgress(s);
+        render();
+      });
+      section.appendChild(row);
+    });
+
+    container.appendChild(section);
+  });
+
+  const doneCount = Object.values(state).filter(Boolean).length;
+  document.getElementById("done-count").textContent = doneCount;
+  document.getElementById("hours-count").textContent = doneCount * 2;
+  document.getElementById("progress-bar").style.width = (doneCount / 56 * 100) + "%";
+
+  let currentBlockName = "Завершено";
+  let currentBlockNum = 5;
+  for (const b of blocks) {
+    const bDays = days.filter(d => d.block === b.n);
+    const bDone = bDays.every(d => state[d.n]);
+    if (!bDone) {
+      currentBlockName = b.name;
+      currentBlockNum = b.n;
+      break;
+    }
+  }
+  document.getElementById("current-block").textContent = currentBlockName;
+  document.getElementById("current-block-sub").textContent = currentBlockNum <= 5
+    ? `блок ${currentBlockNum} из 5`
+    : "все блоки пройдены";
+}
+
+document.getElementById("reset-btn").addEventListener("click", () => {
+  if (confirm("Сбросить весь прогресс обучения?")) {
+    saveProgress({});
+    render();
+  }
+});
+
+document.getElementById("export-btn").addEventListener("click", () => {
+  const state = loadProgress();
+  const done = days.filter(d => state[d.n]);
+  const text = `Прогресс Anthropic Academy: ${done.length} / 56 дней (${done.length * 2} часов)\n\n` +
+    done.map(d => `День ${d.n} (${d.date}) — ${d.topic}`).join("\n");
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.getElementById("export-btn");
+    const orig = btn.textContent;
+    btn.textContent = "Скопировано";
+    setTimeout(() => { btn.textContent = orig; }, 1500);
+  });
+});
+
+render();
+</script>
+
+</body>
+</html>
